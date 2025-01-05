@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.1.1 (Python 3.10.11 on win32)" generated="2025-01-05T22:34:04.986353" rpa="false" schemaversion="5">
+<suite id="s1" name="UIComparisonTest" source="C:\Users\sam\Desktop\AI Project\DemoAi\UIComparisonTest.robot">
+<test id="s1-t1" name="UI Defect Detection On Medium" line="16">
+<kw name="Create Directory" owner="OperatingSystem">
+<msg time="2025-01-05T22:34:05.234631" level="INFO" html="true">Directory '&lt;a href="file://C:\Users\sam\Desktop\AI Project\DemoAi\screenshots"&gt;C:\Users\sam\Desktop\AI Project\DemoAi\screenshots&lt;/a&gt;' already exists.</msg>
+<arg>${SCREENSHOT_DIR}</arg>
+<doc>Creates the specified directory.</doc>
+<status status="PASS" start="2025-01-05T22:34:05.234631" elapsed="0.001001"/>
+</kw>
+<kw name="Get Current Date" owner="DateTime">
+<msg time="2025-01-05T22:34:05.235632" level="INFO">${timestamp} = 20250105_223405</msg>
+<var>${timestamp}</var>
+<arg>result_format=%Y%m%d_%H%M%S</arg>
+<doc>Returns current local or UTC time with an optional increment.</doc>
+<status status="PASS" start="2025-01-05T22:34:05.235632" elapsed="0.000000"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2025-01-05T22:34:05.235632" level="INFO">${NEW_IMAGE} = screenshots/new_image_20250105_223405.png</msg>
+<arg>${NEW_IMAGE}</arg>
+<arg>${SCREENSHOT_DIR}new_image_${timestamp}.png</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2025-01-05T22:34:05.235632" elapsed="0.001000"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2025-01-05T22:34:05.236632" level="INFO">${OUTPUT_WITH_BBOXES} = screenshots/output_with_bboxes_20250105_223405.png</msg>
+<arg>${OUTPUT_WITH_BBOXES}</arg>
+<arg>${SCREENSHOT_DIR}output_with_bboxes_${timestamp}.png</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2025-01-05T22:34:05.236632" elapsed="0.000000"/>
+</kw>
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2025-01-05T22:34:05.236632" level="INFO">Opening browser 'Chrome' to base url 'https://medium.com/datadriveninvestor/i-used-openais-o1-model-to-develop-a-trading-strategy-it-is-destroying-the-market-576a6039e8fa'.</msg>
+<arg>${URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2025-01-05T22:34:05.236632" elapsed="5.019372"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2025-01-05T22:34:10.256004" elapsed="0.040513"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-01-05T22:34:15.310000" level="INFO">Slept 5 seconds.</msg>
+<arg>5</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-01-05T22:34:10.297518" elapsed="5.012482"/>
+</kw>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="File Should Exist" owner="OperatingSystem">
+<msg time="2025-01-05T22:34:15.311000" level="INFO" html="true">File '&lt;a href="file://C:\Users\sam\Desktop\AI Project\DemoAi\screenshots\base_image.png"&gt;C:\Users\sam\Desktop\AI Project\DemoAi\screenshots\base_image.png&lt;/a&gt;' exists.</msg>
+<arg>${BASE_IMAGE}</arg>
+<doc>Fails unless the given ``path`` points to an existing file.</doc>
+<status status="PASS" start="2025-01-05T22:34:15.310000" elapsed="0.001000"/>
+</kw>
+<msg time="2025-01-05T22:34:15.311000" level="INFO">${exists} = True</msg>
+<var>${exists}</var>
+<arg>File Should Exist</arg>
+<arg>${BASE_IMAGE}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-01-05T22:34:15.310000" elapsed="0.001000"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>not ${exists}</arg>
+<arg>Capture Page Screenshot</arg>
+<arg>${BASE_IMAGE}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2025-01-05T22:34:15.311000" elapsed="0.000000"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2025-01-05T22:34:15.435534" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="screenshots/new_image_20250105_223405.png"&gt;&lt;img src="screenshots/new_image_20250105_223405.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>${NEW_IMAGE}</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2025-01-05T22:34:15.312001" elapsed="0.123533"/>
+</kw>
+<arg>${exists}</arg>
+<arg>Capture Page Screenshot</arg>
+<arg>${NEW_IMAGE}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2025-01-05T22:34:15.311000" elapsed="0.124534"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<kw name="Compare Screenshots" owner="UIComparisonLibrary">
+<arg>${BASE_IMAGE}</arg>
+<arg>${NEW_IMAGE}</arg>
+<arg>${OUTPUT_WITH_BBOXES}</arg>
+<status status="PASS" start="2025-01-05T22:34:15.436533" elapsed="0.085096"/>
+</kw>
+<arg>${exists}</arg>
+<arg>Compare Screenshots</arg>
+<arg>${BASE_IMAGE}</arg>
+<arg>${NEW_IMAGE}</arg>
+<arg>${OUTPUT_WITH_BBOXES}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2025-01-05T22:34:15.436533" elapsed="0.085096"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-01-05T22:34:15.521629" level="INFO">Comparison complete. Check screenshots/output_with_bboxes_20250105_223405.png for differences.</msg>
+<arg>Comparison complete. Check ${OUTPUT_WITH_BBOXES} for differences.</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-01-05T22:34:15.521629" elapsed="0.000000"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2025-01-05T22:34:15.522629" elapsed="2.103493"/>
+</kw>
+<doc>Navigate to Medium, capture screenshots, and detect UI defects.</doc>
+<status status="PASS" start="2025-01-05T22:34:05.233631" elapsed="12.392491"/>
+</test>
+<status status="PASS" start="2025-01-05T22:34:04.987354" elapsed="12.639768"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="UIComparisonTest">UIComparisonTest</stat>
+</suite>
+</statistics>
+<errors>
+<msg time="2025-01-05T22:34:04.988353" level="ERROR">Error in file 'C:\Users\sam\Desktop\AI Project\DemoAi\UIComparisonTest.robot' on line 13: Setting variable '${OUTPUT_WITH_BBOXES} ${SCREENSHOT_DIR}output_with_bboxes_${timestamp}.png' failed: Invalid variable name '${OUTPUT_WITH_BBOXES} ${SCREENSHOT_DIR}output_with_bboxes_${timestamp}.png'.</msg>
+<msg time="2025-01-05T22:34:05.232631" level="ERROR">Error in file 'C:\Users\sam\Desktop\AI Project\DemoAi\UIComparisonTest.robot' on line 12: Setting variable '${NEW_IMAGE}' failed: Variable '${timestamp}' not found.</msg>
+</errors>
+</robot>
